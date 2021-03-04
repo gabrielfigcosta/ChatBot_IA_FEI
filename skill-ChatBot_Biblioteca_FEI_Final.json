@@ -1,6 +1,3 @@
-/*ALUNO: GABRIEL SILVA FIGUEREDO COSTA */
-/*RA: 22118023-5*/
-
 {
   "intents": [
     {
@@ -52,10 +49,12 @@
           "value": "Bitly",
           "synonyms": [
             "9",
-            "nona",
             "Bitly",
             "encurtador",
+            "encurtar",
             "link",
+            "links",
+            "nona",
             "url"
           ]
         },
@@ -64,13 +63,13 @@
           "value": "Elaboração",
           "synonyms": [
             "5",
-            "quinta",
-            "Guia para elaboração de trabalhos acadêmicos da FEI",
             "apresentação de trabalhos",
             "citação",
             "estrutura",
             "guia",
+            "Guia para elaboração de trabalhos acadêmicos da FEI",
             "manual",
+            "quinta",
             "referencias",
             "template",
             "tutorial"
@@ -81,14 +80,14 @@
           "value": "Entrega",
           "synonyms": [
             "2",
-            "segunda",
-            "Procedimento para entrega de Trabalhos Acadêmicos",
             "copia",
             "efetuar entrega",
             "formato",
             "obrigatoriedades",
+            "Procedimento para entrega de Trabalhos Acadêmicos",
             "procedimentos",
             "realizar entrega",
+            "segunda",
             "termo"
           ]
         },
@@ -97,11 +96,11 @@
           "value": "Ficha",
           "synonyms": [
             "1",
-            "primeira",
-            "Ficha Catalográfica",
             "Catalografica",
             "elaboração de fichas",
+            "Ficha Catalográfica",
             "identificação de documentos",
+            "primeira",
             "usuarios"
           ]
         },
@@ -122,11 +121,11 @@
           "value": "LaTeX",
           "synonyms": [
             "6",
-            "sexta",
-            "Classe LaTeX da FEI",
             "classe latex",
+            "Classe LaTeX da FEI",
             "dispositivos",
             "formatação",
+            "sexta",
             "sistema"
           ]
         },
@@ -135,8 +134,8 @@
           "value": "Mendeley",
           "synonyms": [
             "8",
-            "oitava",
             "Mendeley",
+            "oitava",
             "rede social academica"
           ]
         },
@@ -145,11 +144,11 @@
           "value": "MORE",
           "synonyms": [
             "7",
-            "setima",
-            "Mecanismo Online para Referências (MORE)",
             "abnt",
             "citações",
-            "referencias"
+            "Mecanismo Online para Referências (MORE)",
+            "referencias",
+            "setima"
           ]
         },
         {
@@ -157,11 +156,11 @@
           "value": "Normalização",
           "synonyms": [
             "4",
-            "quarta",
-            "Orientação para normalização de trabalhos acadêmicos",
             "atendimento",
+            "Orientação para normalização de trabalhos acadêmicos",
             "orientações",
-            "padronizar"
+            "padronizar",
+            "quarta"
           ]
         },
         {
@@ -169,12 +168,36 @@
           "value": "Plagio",
           "synonyms": [
             "3",
-            "terceira",
-            "Combate ao Plágio",
             "CAPES",
             "combate",
+            "Combate ao Plágio",
             "detecção",
-            "ferramenta"
+            "ferramenta",
+            "terceira"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "NovaDuvida",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "nao",
+          "synonyms": [
+            "Não",
+            "negativo"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sim",
+          "synonyms": [
+            "desejo",
+            "positivo",
+            "Sim",
+            "tenho"
           ]
         }
       ],
@@ -238,7 +261,7 @@
       },
       "conditions": "anything_else",
       "dialog_node": "Em outros casos",
-      "previous_sibling": "Bem-vindo",
+      "previous_sibling": "node_2_1614738632871",
       "disambiguation_opt_out": true
     },
     {
@@ -308,6 +331,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Elaboração",
       "dialog_node": "node_10_1614543671360",
       "previous_sibling": "node_6_1614543694621"
@@ -329,6 +357,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Ficha",
       "dialog_node": "node_1_1614543740434"
     },
@@ -358,9 +391,61 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Mendeley",
       "dialog_node": "node_2_1614543572387",
       "previous_sibling": "node_6_1614543609488"
+    },
+    {
+      "type": "standard",
+      "title": "NovaDuvida",
+      "output": {
+        "generic": [
+          {
+            "title": "Deseja tirar mais alguma dúvida?",
+            "options": [
+              {
+                "label": "Sim, tenho outra dúvida!",
+                "value": {
+                  "input": {
+                    "text": "Sim"
+                  }
+                }
+              },
+              {
+                "label": "Não, tudo ok!",
+                "value": {
+                  "input": {
+                    "text": "Não"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "conditions": "@MenuOpcoes",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1614738632871",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Reinicia",
+      "parent": "node_2_1614738632871",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1614492041585"
+      },
+      "conditions": "@NovaDuvida:sim",
+      "dialog_node": "node_2_1614740843127",
+      "previous_sibling": "node_5_1614739002135"
     },
     {
       "type": "standard",
@@ -370,7 +455,7 @@
           {
             "values": [
               {
-                "text": "A classe LaTeX da FEI é um arquivo de formatação de trabalhos acadêmicos para usuários de LaTeX, de acordo com as normas de formatação do Centro Universitário FEI. Ela está disponível nas principais distribuições de LaTeX (<a href=\"https://miktex.org\" target=\"_blank\">MikTeX </a> no Windows, <a href=\"http://www.tug.org/mactex/\" target=\"_blank\">MacTeX </a> no MacOS e <a href=\"https://www.tug.org/texlive/ target=\"_blank\">TeX Live </a>  no Linux), possui um <a href=\"http://linorg.usp.br/CTAN/macros/latex/contrib/fei/fei.pdf\">manual de utilização </a> em PDF e um <a hrefe=\"http://linorg.usp.br/CTAN/macros/latex/contrib/fei/fei-template.tex\"target=\"_blank\">template </a> para ajudar usuários a iniciar seus trabalhos acadêmicos.\n\nA classe também possui um <a href=\"http://douglasrizzo.com.br/Classe-Latex-FEI/\"target=\"_blank\">site </a> e <a href=\"https://groups.google.com/g/grupo-latex-fei/c/CmJgGQiFZy4?pli=1\"target=\"_blank\">um grupo no Google </a> com dicas para usuários. O projeto de código aberto é mantido no GitHub, tendo como desenvolvedor principal <a href=\"mailto:douglasrizzo@fei.edu.br\"> Douglas De Rizzo Meneghetti. </a>"
+                "text": "A classe LaTeX da FEI é um arquivo de formatação de trabalhos acadêmicos para usuários de LaTeX, de acordo com as normas de formatação do Centro Universitário FEI. Ela está disponível nas principais distribuições de LaTeX (<a href=\"https://miktex.org\" target=\"_blank\">MikTeX </a> no Windows, <a href=\"http://www.tug.org/mactex/\" target=\"_blank\">MacTeX </a> no MacOS e <a href=\"https://www.tug.org/texlive/ target=\"_blank\">TeX Live </a>  no Linux), possui um <a href=\"http://linorg.usp.br/CTAN/macros/latex/contrib/fei/fei.pdf\">manual de utilização </a> em PDF e um <a hrefe=\"http://linorg.usp.br/CTAN/macros/latex/contrib/fei/fei-template.tex\"target=\"_blank\">template </a> para ajudar usuários a iniciar seus trabalhos acadêmicos.\n\nA classe também possui um <a href=\"http://douglasrizzo.com.br/Classe-Latex-FEI/\"target=\"_blank\">site </a> e <a href=\"https://groups.google.com/g/grupo-latex-fei/c/CmJgGQiFZy4?pli=1\"target=\"_blank\">um grupo no Google </a> com dicas para usuários. O projeto de código aberto é mantido no GitHub, tendo como desenvolvedor principal <a href=\"mailto:douglasrizzo\"+@+\"fei.edu.br\"> Douglas De Rizzo Meneghetti. </a>"
               }
             ],
             "response_type": "text",
@@ -379,6 +464,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:LaTeX",
       "dialog_node": "node_3_1614543646830",
       "previous_sibling": "node_10_1614543671360"
@@ -409,9 +499,34 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Plagio",
       "dialog_node": "node_4_1614543710014",
       "previous_sibling": "node_9_1614543724433"
+    },
+    {
+      "type": "standard",
+      "title": "Finaliza",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Foi um prazer poder te ajudar! Volte sempre que tiver dúvidas."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1614738632871",
+      "conditions": "@NovaDuvida:nao",
+      "dialog_node": "node_5_1614739002135"
     },
     {
       "type": "standard",
@@ -439,6 +554,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:(Guia da nova reforma ortográfica)",
       "dialog_node": "node_6_1614542336413",
       "previous_sibling": "node_6_1614542798710"
@@ -469,6 +589,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Bitly",
       "dialog_node": "node_6_1614542798710",
       "previous_sibling": "node_2_1614543572387"
@@ -499,6 +624,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:MORE",
       "dialog_node": "node_6_1614543609488",
       "previous_sibling": "node_3_1614543646830"
@@ -520,6 +650,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Normalização",
       "dialog_node": "node_6_1614543694621",
       "previous_sibling": "node_4_1614543710014"
@@ -619,7 +754,7 @@
         ]
       },
       "parent": "Bem-vindo",
-      "conditions": "#Recepcao",
+      "conditions": "#Recepcao || @NovaDuvida:sim",
       "dialog_node": "node_7_1614492041585",
       "previous_sibling": "handler_1_1614492910209"
     },
@@ -649,6 +784,11 @@
         ]
       },
       "parent": "node_7_1614492041585",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_2_1614738632871"
+      },
       "conditions": "@MenuOpcoes:Entrega",
       "dialog_node": "node_9_1614543724433",
       "previous_sibling": "node_1_1614543740434"
@@ -678,7 +818,7 @@
     }
   },
   "learning_opt_out": false,
-  "name": "ChatBot_Biblioteca_FEI",
+  "name": "ChatBot_Biblioteca_FEI_Final",
   "language": "pt-br",
   "description": "Atividade para aula de Inteligencia Artificial, criando um ChatBot para a página de trabalhos acadêmicos da biblioteca da FEI"
 }
